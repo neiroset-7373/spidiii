@@ -1,0 +1,259 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  transition: background 0.5s ease;
+}
+
+body.animated-bg {
+  background: url('https://imgfy.ru/ib/GtCJuc8FZTS6rHP_1775668358.webp'), url('https://imgfy.ru/ib/KExDLsmPdi6S69l_1775668353.webp'), url('https://imgfy.ru/ib/I3Y7S4fw60NCXG6_1775668356.webp'), url('https://imgfy.ru/ib/Q0tS8jbc3nBw3HD_1775668355.webp'), url('https://imgfy.ru/ib/MyczLaOBlcaN8mB_1775668356.webp'), url('https://imgfy.ru/ib/CesmqooWrkeKIrQ_1775668355.webp'), url('https://imgfy.ru/ib/9qIh8pdmiCKVGII_1775668355.webp'), url('https://imgfy.ru/ib/ieqT6ZfHDxmCXc2_1775668355.webp'), url('https://imgfy.ru/ib/fQVN18ewyaM4V0w_1775668355.webp'), url('https://imgfy.ru/ib/zuzqivMLnYIp6L4_1775668355.webp');
+  background-size: cover;
+  animation: background-scroll 60s linear infinite;
+  transition: background 0.5s ease;
+}
+
+@keyframes background-scroll {
+  0% {
+    background-position: 0% 0%, 10% 10%, 20% 20%, 30% 30%, 40% 40%, 50% 50%, 60% 60%, 70% 70%, 80% 80%, 90% 90%;
+  }
+  100% {
+    background-position: 100% 100%, 90% 90%, 80% 80%, 70% 70%, 60% 60%, 50% 50%, 40% 40%, 30% 30%, 20% 20%, 10% 10%;
+  }
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 90vw;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #ff6b6b, #667eea);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.header p {
+  font-size: 1.5rem;
+  color: #a0a0a0;
+}
+
+.header p small {
+  font-size: 0.8em;
+  color: #666;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Clicker Button */
+.clicker-container {
+  position: relative;
+  margin: 10px 0;
+}
+
+.clicker-button {
+  background: linear-gradient(145deg, #ff6b6b, #ee5253);
+  transition: all 0.3s ease;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+  transition: all 0.1s ease, background 0.3s ease;
+  font-weight: bold;
+  min-width: 200px;
+}
+
+.clicker-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 107, 107, 0.5);
+}
+
+.clicker-button:active, .scale-90 {
+  transform: scale(0.9);
+}
+
+.click-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffdd59;
+  pointer-events: none;
+  animation: float-up 0.8s ease-out forwards;
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100px) scale(1.5);
+  }
+}
+
+/* Upgrades */
+.upgrades, .stats, .settings {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.upgrades h2, .stats h2, .settings h2 {
+  margin-bottom: 10px;
+  color: #ff6b6b;
+  font-size: 1.3rem;
+}
+
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.upgrade-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.upgrade-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.upgrade-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.upgrade-btn.special {
+  background: linear-gradient(145deg, #ff9900, #ff6600);
+  border: 1px solid #ffaa33;
+}
+
+.upgrade-btn.special:hover:not(:disabled) {
+  background: linear-gradient(145deg, #ffaa33, #ff7711);
+}
+
+/* Stats */
+.stats ul {
+  list-style: none;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.stats li {
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.stats strong {
+  color: #ffdd59;
+}
+
+/* Settings */
+.reset-btn {
+  background: #d63031;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.reset-btn:hover {
+  background: #c0392b;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 600px) {
+  .app {
+    width: 95vw;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header p {
+    font-size: 1.3rem;
+  }
+  .clicker-button {
+    padding: 15px 30px;
+    font-size: 1.3rem;
+  }
+  .click-effect {
+    font-size: 1.3rem;
+  }
+  .upgrade-btn {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Desktop Optimized */
+@media (min-width: 601px) {
+  .app {
+    width: 80vw;
+    max-width: 800px;
+    padding: 30px;
+  }
+  .clicker-button {
+    padding: 25px 50px;
+    font-size: 1.8rem;
+  }
+  .click-effect {
+    font-size: 2rem;
+  }
+}
